@@ -1,6 +1,7 @@
+let n = 1
 getPAGE.onclick = () => {
     let request = new XMLHttpRequest()
-    request.open ('GET','/page2')
+    request.open ('GET',`/page${n+1}.json`)
     request.onreadystatechange = () => {
         if (request.readyState === 4 && request.status ===200){
                 const array = JSON.parse(request.response)
@@ -8,7 +9,8 @@ getPAGE.onclick = () => {
                     const li = document.createElement('li')
                     li.textContent = item.id
                     xxx.appendChild(li)
-                })
+                });
+                n += 1
         }
     }
     request.send()
